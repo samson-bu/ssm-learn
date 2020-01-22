@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Appenders>
+        <Console name="STDOUT">
+            <PatternLayout pattern="%date{yyyyMMdd-hh:mm:ss.SSS} %-5level [%thread] %logger %m%n"/>
+            <ThresholdFilter level="debug"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <logger name="org.springframework.beans" level="debug"/>
+        <logger name="org.springframework.web" level="debug"/>
+        <logger name="self.samson.ssm.learn" level="debug"/>
+        <Root level="error">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
