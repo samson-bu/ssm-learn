@@ -10,8 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
+import java.nio.file.PathMatcher;
 
 @Configuration
 @PropertySource(value = {"classpath:db.properties"})
@@ -36,9 +38,10 @@ public class AppConfig implements EnvironmentAware {
     }
 
     @Bean(name = "sqlSessionFactory")
-    public SqlSessionFactoryBean sqlSessionFactory() {
+    public SqlSessionFactoryBean sqlSessionFactory() throws Exception{
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
-        sqlSessionFactory.setConfigLocation(new ClassPathResource("mybatis-sql-map-config.xml"));
+        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:self/samson/ssm/learn/mapper/xml/*.xml"));
+        sqlSessionFactory.setConfigLocation(new ClassPathResource("mybatis.xml"));
         sqlSessionFactory.setDataSource(dataSource());
 
         return sqlSessionFactory;
