@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import self.samson.ssm.learn.mapper.ItemsMapper;
 import self.samson.ssm.learn.po.Items;
 import self.samson.ssm.learn.service.ItemsService;
 

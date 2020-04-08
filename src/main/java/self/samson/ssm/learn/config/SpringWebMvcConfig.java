@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.*;
 public class SpringWebMvcConfig implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("/WEB-INF/jsp/", ".jsp");
+        registry.jsp("/WEB-INF/views/", ".jsp");
     }
 
     @Override
@@ -23,6 +23,8 @@ public class SpringWebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/**")
                 .addResourceLocations("/assets/");
+        registry.addResourceHandler("/mini/**")
+                .addResourceLocations("/assets/layuimini/");
     }
 
     public StandardServletMultipartResolver multipartResolver() {
